@@ -28,6 +28,6 @@ while(running):
     print("*" * 50)
     match credential_auth:
         case "admin":
-            admin_section(username)
+            running = admin_section()
         case "employee":
-            employee_section(username)
+            running = employee_section()

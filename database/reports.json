@@ -1,1 +1,17 @@
-[]
+[
+    {
+        "author": "bob",
+        "status": "200",
+        "message": "Test report"
+    },
+    {
+        "author": "bob",
+        "status": "200",
+        "message": "Test report"
+    },
+    {
+        "author": "ben",
+        "status": "200",
+        "message": "Test report"
+    }
+]
