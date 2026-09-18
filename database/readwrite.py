@@ -4,6 +4,7 @@ import json
 BASE_DIR = Path(__file__).resolve().parent
 EMPLOYEES_FILE = BASE_DIR / "employees.json"
 PRODUCTS_FILE = BASE_DIR / "products.json"
+REPORT_FILE = BASE_DIR / "reports.json"
 
 
 def read_json_file(path: Path):
@@ -53,3 +54,15 @@ def add_product(new_product: dict):
     if write_json_file(PRODUCTS_FILE, products):
         return "Product added successfully."
     return "Failed to add product."
+
+
+def read_report():
+    return read_json_file(REPORT_FILE) or []
+
+
+def write_report(new_report: dict):
+    reports = read_report()
+    reports.append(new_report)
+    if (write_json_file(REPORT_FILE, reports)):
+        return "Report written successfully." 
+    return "Faild to write new report."
