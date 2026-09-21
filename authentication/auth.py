@@ -1,7 +1,7 @@
 from database.readwrite import (read_employees)
 
 
-def employee_auth(username, password):
+def employee_auth(username:str, password:str):
     employees = read_employees()
 
     for employee in employees:

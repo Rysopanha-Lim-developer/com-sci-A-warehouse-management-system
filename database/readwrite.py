@@ -48,9 +48,11 @@ def read_products():
     return read_json_file(PRODUCTS_FILE) or []
 
 
-def add_product(new_product: dict):
+def add_product(category:str, new_product: dict):
     products = read_products()
-    products.append(new_product)
+    for product in products:
+        if product.get("category") == category:
+            product["items"].append(new_product)
     if write_json_file(PRODUCTS_FILE, products):
         return "Product added successfully."
     return "Failed to add product."
@@ -66,3 +68,12 @@ def write_report(new_report: dict):
     if (write_json_file(REPORT_FILE, reports)):
         return "Report written successfully." 
     return "Faild to write new report."
+
+
+if __name__ == "__main__":
+    a = {
+        "product_name": "DIDDY",
+        "stock": 69,
+        "price": 69.69
+        }
+    add_product("Meat & Seafood", a)
