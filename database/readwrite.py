@@ -57,7 +57,7 @@ def add_product(category:str, new_product: dict):
         return "Product added successfully."
     return "Failed to add product."
 
-
+#test
 def delete_product(category:str, product: dict):
     products = read_products()
     if isinstance(products, list):
