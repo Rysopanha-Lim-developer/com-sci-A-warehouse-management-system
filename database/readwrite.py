@@ -58,6 +58,21 @@ def add_product(category:str, new_product: dict):
     return "Failed to add product."
 
 
+def delete_product(category:str, product: dict):
+    products = read_products()
+    if isinstance(products, list):
+        for category in products:
+            if "items" in category and isinstance(category["items"], list):
+                category["items"] = [
+                    item for item in category["items"]
+                    if item.get("product_name") != product.get("product_name")
+                ]
+    if write_json_file(PRODUCTS_FILE, products):
+        return "Product has been deleted successfully"
+    return "Fail to delete product"
+
+
+
 def read_report():
     return read_json_file(REPORT_FILE) or []
 
@@ -72,8 +87,8 @@ def write_report(new_report: dict):
 
 if __name__ == "__main__":
     a = {
-        "product_name": "DIDDY",
+        "product_name": "Chicken Breast",
         "stock": 69,
         "price": 69.69
         }
-    add_product("Meat & Seafood", a)
+    delete_product("Meat & Seafood", a)
