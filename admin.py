@@ -1,4 +1,4 @@
-from database.readwrite import (read_report, read_products, add_product)
+from database.readwrite import (read_report, read_products, add_product, write_products)
 
 
 def admin_section():
@@ -174,26 +174,28 @@ def show_item_stocks(index:int):
 
 
 def resupply_items():
-    stocks = read_products()
+    MIN_ITEMS_IN_STOCK = 20
+    current_stocks = read_products()
+    need_restock_items = []
     print("=========================================")
     print("Products with less than 20 items in stock")
     print("=========================================")
-    for i in range(len(stocks)):
-        items = stocks[i]["items"]
+    for i in range(len(current_stocks)):
+        items = current_stocks[i]["items"]
         for j in range(len(items)):
-            if items[j].get("stock") <= 20:
+            if items[j].get("stock") < MIN_ITEMS_IN_STOCK:
+                need_restock_items.append(items[j])
                 print("-" * 50)
                 print(f"Product name   :    {items[j].get("product_name")}")
                 print(f"Current stock  :    {items[j].get("stock")}")
                 print("-" * 50)
 
-    restock_option = int(input("""Do you to do bulk restock?\nEnter '1' to restock all products with the same amount\nEnter '2' to restock product by choice\nPlease select an option: """))
+    restock_option = int(input("""Do you to do bulk restock?\nEnter '1' to restock all products with the same amount (100 items): """))
 
     match restock_option:
         case 1:
-            bulk_restock()
-        case 2:
-            restock_by_choice()
+            bulk_restock(current_stocks, need_restock_items)
+
 
 
 def categories_menu():
@@ -219,12 +221,19 @@ def categories_menu():
     return category
 
 
-def bulk_restock():
-    pass
+def bulk_restock(current_stocks: list, need_restock_items: list):
+    AMOUNT_OF_ADDED_ITEMS = 100
+    if not need_restock_items:
+        print("No products need restocking.")
+        return
 
+    for item in need_restock_items:
+        item["stock"] +=  AMOUNT_OF_ADDED_ITEMS 
 
-def restock_by_choice():
-    pass
+    if write_products(current_stocks):
+        print(f"Restocked {len(need_restock_items)} product(s) by 100 each.")
+    else:
+        print("Failed to save the restocked products.")
 
 
 class NewProduct:

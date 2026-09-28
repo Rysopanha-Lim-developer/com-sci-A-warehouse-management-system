@@ -48,6 +48,10 @@ def read_products():
     return read_json_file(PRODUCTS_FILE) or []
 
 
+def write_products(products: list):
+    return write_json_file(PRODUCTS_FILE, products)
+
+
 def add_product(category:str, new_product: dict):
     products = read_products()
     for product in products:
