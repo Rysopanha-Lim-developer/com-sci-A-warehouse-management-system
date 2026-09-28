@@ -661,6 +661,11 @@
                 "product_name": "Air Freshener",
                 "stock": 145,
                 "price": 3.8
+            },
+            {
+                "product_name": "door knob",
+                "stock": 17,
+                "price": 10.0
             }
         ]
     },

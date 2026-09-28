@@ -1,5 +1,6 @@
 from database.readwrite import (read_report, read_products, add_product)
 
+
 def admin_section():
     running = True
     while(running):
@@ -10,8 +11,9 @@ def admin_section():
         print("0. Exit")
         print("1. Check report")
         print("2. Check stock")
-        print("3. Add new items")
-        print("4. Remove items")
+        print("3. Restock items")
+        print("4. Add new items")
+        print("5. Remove items")
         
         action = int(input("Select one of the actions: "))
         match action:
@@ -23,8 +25,10 @@ def admin_section():
             case 2:
                 check_stock()
             case 3:
-                add_items()
+                restock()
             case 4:
+                add_items()
+            case 5:
                 remove_items()
 
 
@@ -89,7 +93,15 @@ def check_stock():
 
 
 def restock():
-    pass
+    running = True
+    while(running):
+        choice = int(input("""Do you to do bulk restock?\nEnter '0' to Exit\nEnter '1' to restock products\nPlease select an option: """))
+        match choice:
+            case 0:
+                running = False
+            case 1:
+                resupply_items()
+
 
 
 def add_items():
@@ -104,6 +116,10 @@ def add_items():
         print("*" * 50)
 
         category = categories_menu()
+        if category == 0:
+            running = False
+            break
+
         product_name = input("Enter product name: ")
         stock = int(input("Enter the amount of stock: "))
         price = float(input("Enter the sale price: "))
@@ -152,9 +168,32 @@ def show_item_stocks(index:int):
     for i in range(len(items)):
         print("-" * 50)
         print(f"Product name   :    {items[i].get("product_name")}")
-        print(f"Number in stock:    {items[i].get("stock")}")
+        print(f"Current stock  :    {items[i].get("stock")}")
         print(f"Current price  :    {items[i].get("price")}")
         print("-" * 50)
+
+
+def resupply_items():
+    stocks = read_products()
+    print("=========================================")
+    print("Products with less than 20 items in stock")
+    print("=========================================")
+    for i in range(len(stocks)):
+        items = stocks[i]["items"]
+        for j in range(len(items)):
+            if items[j].get("stock") <= 20:
+                print("-" * 50)
+                print(f"Product name   :    {items[j].get("product_name")}")
+                print(f"Current stock  :    {items[j].get("stock")}")
+                print("-" * 50)
+
+    restock_option = int(input("""Do you to do bulk restock?\nEnter '1' to restock all products with the same amount\nEnter '2' to restock product by choice\nPlease select an option: """))
+
+    match restock_option:
+        case 1:
+            bulk_restock()
+        case 2:
+            restock_by_choice()
 
 
 def categories_menu():
@@ -178,6 +217,14 @@ def categories_menu():
     
     category = int(input("Select one of the category: "))
     return category
+
+
+def bulk_restock():
+    pass
+
+
+def restock_by_choice():
+    pass
 
 
 class NewProduct:

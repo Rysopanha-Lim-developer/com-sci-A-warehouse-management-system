@@ -57,7 +57,7 @@ def add_product(category:str, new_product: dict):
         return "Product added successfully."
     return "Failed to add product."
 
-#test
+
 def delete_product(category:str, product: dict):
     products = read_products()
     if isinstance(products, list):
@@ -70,7 +70,6 @@ def delete_product(category:str, product: dict):
     if write_json_file(PRODUCTS_FILE, products):
         return "Product has been deleted successfully"
     return "Fail to delete product"
-
 
 
 def read_report():
