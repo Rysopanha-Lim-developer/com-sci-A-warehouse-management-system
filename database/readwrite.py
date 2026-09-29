@@ -64,13 +64,15 @@ def add_product(category:str, new_product: dict):
 
 def delete_product(category:str, product: dict):
     products = read_products()
-    if isinstance(products, list):
-        for category in products:
-            if "items" in category and isinstance(category["items"], list):
-                category["items"] = [
-                    item for item in category["items"]
-                    if item.get("product_name") != product.get("product_name")
-                ]
+    if not products:
+        return "Fail to delete product"
+
+    for entry in products:
+        if entry.get("category") == category:
+            entry["items"] = [
+                item for item in entry.get("items", [])
+                if item.get("product_name") != product.get("product_name")
+            ]
     if write_json_file(PRODUCTS_FILE, products):
         return "Product has been deleted successfully"
     return "Fail to delete product"

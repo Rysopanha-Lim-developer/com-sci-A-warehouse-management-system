@@ -32,6 +32,24 @@ def admin_section():
                 remove_items()
 
 
+CATEGORIES = [
+    "Produce",
+    "Meat & Seafood",
+    "Dairy",
+    "Bakery",
+    "Deli",
+    "Pantry / Dry Goods",
+    "Baking & Spices",
+    "Condiments & Sauces",
+    "Snacks",
+    "Beverages",
+    "Frozen Foods",
+    "Household Supplies",
+    "Personal Care",
+    "Pet Care",
+]
+
+
 def check_report():
     running = True
     while(running):
@@ -62,34 +80,11 @@ def check_stock():
         match category:
             case 0:
                 running = False
-            case 1:
-                show_item_stocks(0)
-            case 2:
-                show_item_stocks(1)
-            case 3:
-                show_item_stocks(2)
-            case 4:
-                show_item_stocks(3)
-            case 5:
-                show_item_stocks(4)
-            case 6:
-                show_item_stocks(5)
-            case 7:
-                show_item_stocks(6)
-            case 8:
-                show_item_stocks(7)
-            case 9:
-                show_item_stocks(8)
-            case 10:
-                show_item_stocks(9)
-            case 11:
-                show_item_stocks(10)
-            case 12:
-                show_item_stocks(11)
-            case 13:
-                show_item_stocks(12)
-            case 14:
-                show_item_stocks(13)
+            case n if 1 <= n <= len(CATEGORIES):
+                selected_category = n - 1
+                show_item_stocks(selected_category)
+            case _:
+                print("INVALID INPUT")
 
 
 def restock():
@@ -101,7 +96,6 @@ def restock():
                 running = False
             case 1:
                 resupply_items()
-
 
 
 def add_items():
@@ -124,38 +118,15 @@ def add_items():
         stock = int(input("Enter the amount of stock: "))
         price = float(input("Enter the sale price: "))
         new_product = NewProduct(product_name, stock, price)
-    
+
         match category:
             case 0:
                 running = False
-            case 1:
-                add_product("Produce", vars(new_product))#vars() convert an instance from memory state to a dics form
-            case 2:
-                add_product("Meat & Seafood", vars(new_product))
-            case 3:
-                add_product("Dairy", vars(new_product))
-            case 4:
-                add_product("Bakery", vars(new_product))
-            case 5:
-                add_product("Deli", vars(new_product))
-            case 6:
-                add_product("Pantry / Dry Goods", vars(new_product))
-            case 7:
-                add_product("Baking & Spices", vars(new_product))
-            case 8:
-                add_product("Condiments & Sauces", vars(new_product))
-            case 9:
-                add_product("Snacks", vars(new_product))
-            case 10:
-                add_product("Beverages", vars(new_product))
-            case 11:
-                add_product("Frozen Foods", vars(new_product))
-            case 12:
-                add_product("Household Supplies", vars(new_product))
-            case 13:
-                add_product("Personal Care", vars(new_product))
-            case 14:
-                add_product("Pet Care", vars(new_product))
+            case n if 1 <= n <= len(CATEGORIES):
+                category = CATEGORIES[n - 1]
+                add_product(category, vars(new_product))
+            case _:
+                print("INVALID INPUT")
 
 
 def remove_items():
@@ -195,7 +166,6 @@ def resupply_items():
     match restock_option:
         case 1:
             bulk_restock(current_stocks, need_restock_items)
-
 
 
 def categories_menu():
