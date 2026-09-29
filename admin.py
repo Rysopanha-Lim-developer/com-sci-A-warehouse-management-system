@@ -1,4 +1,4 @@
-from database.readwrite import (read_report, read_products, add_product, write_products)
+from database.readwrite import (read_report, read_products, add_product, write_products, delete_product)
 
 
 def admin_section():
@@ -114,7 +114,7 @@ def add_items():
             running = False
             break
 
-        product_name = input("Enter product name: ")
+        product_name = input("Enter product name: ").title()
         stock = int(input("Enter the amount of stock: "))
         price = float(input("Enter the sale price: "))
         new_product = NewProduct(product_name, stock, price)
@@ -130,7 +130,29 @@ def add_items():
 
 
 def remove_items():
-    pass
+    running = True
+    while(running):
+        print("*" * 50)
+        print("TO REMOVE A PRODUCT")
+        print("1. Choose the category")
+        print("2. Enter the product name")
+        print("*" * 50)
+
+        category = categories_menu()
+        if category == 0:
+            running = False
+            break
+
+        product_name = input("Enter product name: ").title()
+
+        match category:
+            case 0:
+                running = False
+            case n if 1 <= n <= len(CATEGORIES):
+                category = CATEGORIES[n - 1]
+                delete_product(category, product_name)
+            case _:
+                print("INVALID INPUT")
 
 
 def show_item_stocks(index:int):

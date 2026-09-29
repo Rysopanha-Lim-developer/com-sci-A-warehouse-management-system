@@ -62,7 +62,7 @@ def add_product(category:str, new_product: dict):
     return "Failed to add product."
 
 
-def delete_product(category:str, product: dict):
+def delete_product(category:str, product_name: str):
     products = read_products()
     if not products:
         return "Fail to delete product"
@@ -71,7 +71,7 @@ def delete_product(category:str, product: dict):
         if entry.get("category") == category:
             entry["items"] = [
                 item for item in entry.get("items", [])
-                if item.get("product_name") != product.get("product_name")
+                if item.get("product_name") != product_name
             ]
     if write_json_file(PRODUCTS_FILE, products):
         return "Product has been deleted successfully"
