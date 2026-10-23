@@ -1,21 +1,43 @@
-def employee_section(username):
-    print("-" * 50)
-    print("This is employees center")
-    print("=" * 50)
-    print("Enter the number of the corresponding to the action.")
-    print("1.")
-    print("2.")
-    print("3.")
-    print("4.")
-    action = int(input("Select one of the actions: "))
-    match action:
-        case 1:
-            pass
-        case 2:
-            pass
-        case 3:
-            pass
+from database.readwrite import (read_products, write_report)
+from admin import (check_stock)
 
+def employee_section(username=None):
+    if not username:
+        username = input("Enter username for testing: ").strip().title()
+    
+    running = True
+    while (running):
+        print("-" * 50)
+        print(f"Welcome {username}")
+        print("This is employees center")
+        print("=" * 50)
+        print("Enter the number of the corresponding to the action.")
+        print("1. Check Stock")
+        print("2. write Report")
+
+        action = int(input("Select one of the actions: "))
+        match action:
+            case 0:
+                running = False
+                return True
+            case 1:
+                check_stock()
+            case 2:
+                employee_report(username)
+
+def employee_report(username):
+    status = input("Enter date: ")
+    message = input("Enter report message: ")
+    
+    new_report = {
+        "author": username,
+        "status": status,
+        "message": message
+    }
+    
+    result = write_report(new_report)
+    print(result)
+    
 
 if __name__ == "__main__":
     employee_section()

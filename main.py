@@ -30,4 +30,4 @@ while(running):
         case "admin":
             running = admin_section()
         case "employee":
-            running = employee_section()
+            running = employee_section(username)
