@@ -4,12 +4,12 @@
         "items": [
             {
                 "product_name": "Bananas",
-                "stock": 168,
+                "stock": 18,
                 "price": 4.12
             },
             {
                 "product_name": "Apples",
-                "stock": 194,
+                "stock": 14,
                 "price": 7.96
             },
             {
@@ -69,17 +69,17 @@
             },
             {
                 "product_name": "Ground Beef",
-                "stock": 155,
+                "stock": 15,
                 "price": 8.04
             },
             {
                 "product_name": "Pork Chops",
-                "stock": 6,
+                "stock": 16,
                 "price": 19.33
             },
             {
                 "product_name": "Salmon Fillet",
-                "stock": 45,
+                "stock": 5,
                 "price": 17.91
             },
             {
@@ -109,7 +109,7 @@
             },
             {
                 "product_name": "Sausages",
-                "stock": 16,
+                "stock": 116,
                 "price": 18.65
             }
         ]
@@ -119,7 +119,7 @@
         "items": [
             {
                 "product_name": "Whole Milk",
-                "stock": 142,
+                "stock": 14,
                 "price": 4.43
             },
             {
@@ -149,7 +149,7 @@
             },
             {
                 "product_name": "Mozzarella Cheese",
-                "stock": 174,
+                "stock": 17,
                 "price": 6.86
             },
             {
@@ -174,7 +174,7 @@
         "items": [
             {
                 "product_name": "White Bread",
-                "stock": 167,
+                "stock": 17,
                 "price": 21.1
             },
             {
@@ -204,7 +204,7 @@
             },
             {
                 "product_name": "Baguette",
-                "stock": 191,
+                "stock": 19,
                 "price": 7.25
             },
             {
@@ -229,12 +229,12 @@
         "items": [
             {
                 "product_name": "Sliced Ham",
-                "stock": 19,
+                "stock": 119,
                 "price": 6.88
             },
             {
                 "product_name": "Turkey Slices",
-                "stock": 13,
+                "stock": 113,
                 "price": 20.42
             },
             {
@@ -249,7 +249,7 @@
             },
             {
                 "product_name": "Pastrami",
-                "stock": 150,
+                "stock": 10,
                 "price": 22.09
             },
             {
@@ -274,7 +274,7 @@
             },
             {
                 "product_name": "Coleslaw",
-                "stock": 195,
+                "stock": 15,
                 "price": 14.69
             }
         ]
@@ -314,7 +314,7 @@
             },
             {
                 "product_name": "Oatmeal",
-                "stock": 45,
+                "stock": 5,
                 "price": 20.11
             },
             {
@@ -344,7 +344,7 @@
             },
             {
                 "product_name": "Granulated Sugar",
-                "stock": 7,
+                "stock": 107,
                 "price": 17.49
             },
             {
@@ -354,7 +354,7 @@
             },
             {
                 "product_name": "Baking Powder",
-                "stock": 142,
+                "stock": 12,
                 "price": 19.15
             },
             {
@@ -429,7 +429,7 @@
             },
             {
                 "product_name": "Pasta Sauce",
-                "stock": 9,
+                "stock": 109,
                 "price": 4.13
             },
             {
@@ -559,7 +559,7 @@
         "items": [
             {
                 "product_name": "Frozen Pizza",
-                "stock": 13,
+                "stock": 113,
                 "price": 21.7
             },
             {
@@ -619,7 +619,7 @@
             },
             {
                 "product_name": "Toilet Paper",
-                "stock": 18,
+                "stock": 118,
                 "price": 17.32
             },
             {
@@ -664,7 +664,7 @@
             },
             {
                 "product_name": "Door Knob",
-                "stock": 17,
+                "stock": 117,
                 "price": 10.0
             }
         ]
@@ -679,7 +679,7 @@
             },
             {
                 "product_name": "Toothpaste",
-                "stock": 8,
+                "stock": 108,
                 "price": 24.27
             },
             {
@@ -729,7 +729,7 @@
         "items": [
             {
                 "product_name": "Dry Dog Food",
-                "stock": 147,
+                "stock": 17,
                 "price": 17.05
             },
             {
@@ -744,7 +744,7 @@
             },
             {
                 "product_name": "Dog Treats",
-                "stock": 19,
+                "stock": 119,
                 "price": 15.11
             },
             {

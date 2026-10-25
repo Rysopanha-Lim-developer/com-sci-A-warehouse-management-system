@@ -1,11 +1,11 @@
 [
     {
-        "username":"Panha",
+        "username":"panha",
         "password": "6969",
         "role": "admin"
     },
     {
-        "username":"Heng",
+        "username":"heng",
         "password": "7667",
         "role": "employee"
     }

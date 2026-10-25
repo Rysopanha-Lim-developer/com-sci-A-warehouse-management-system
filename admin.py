@@ -1,11 +1,12 @@
 from database.readwrite import (read_report, read_products, add_product, write_products, delete_product)
 
 
-def admin_section():
+def admin_section(username:str):
     running = True
     while(running):
-        print("=" * 50)
-        print("This is admin control center")
+        print("-" * 50)
+        print(f"Welcome {username.title()}")
+        print("This is admin center")
         print("=" * 50)
         print("Enter the number of the corresponding to the action.")
         print("0. Exit")
@@ -63,7 +64,7 @@ def check_report():
         reports = read_report()
         found_report = False
         for report in reports:
-            if report.get("author") == username:
+            if report.get("author") == username.lower():
                 found_report = True
                 print(f"Report from {username} **{report.get("message")}**")
 
@@ -90,7 +91,7 @@ def check_stock():
 def restock():
     running = True
     while(running):
-        choice = int(input("""Do you to do bulk restock?\nEnter '0' to Exit\nEnter '1' to restock products\nPlease select an option: """))
+        choice = int(input("""Enter '0' to Exit\nEnter '1' to restock products\nPlease select an option: """))
         match choice:
             case 0:
                 running = False
@@ -183,7 +184,7 @@ def resupply_items():
                 print(f"Current stock  :    {items[j].get("stock")}")
                 print("-" * 50)
 
-    restock_option = int(input("""Do you to do bulk restock?\nEnter '1' to restock all products with the same amount (100 items): """))
+    restock_option = int(input("""Enter '0' to return or '1' to restock all products with the same amount (100 items): """))
 
     match restock_option:
         case 1:
@@ -236,4 +237,4 @@ class NewProduct:
 
 
 if __name__ == "__main__":
-    admin_section()
+    admin_section("Panha")
