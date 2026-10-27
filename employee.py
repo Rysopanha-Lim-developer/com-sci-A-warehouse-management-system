@@ -27,8 +27,15 @@ def employee_section(username: str):
                 employee_report(username)
 
 def employee_report(username:str):
-    status = input("Follow the format DATE/MONTH/YEAR\nEnter date: ")
-    message = input("Enter report message: ")
+    status = input("Follow the format DATE/MONTH/YEAR (or 0 to cancel)\nEnter date: ").strip()
+    if status == "0":
+        print("Report Cancelled.")
+        return
+
+    message = input("Enter report message (or 0 to cencel): ")
+    if message == "0":
+        print("Report Cancelled.")
+        return
     
     new_report = {
         "author": username.lower(),
