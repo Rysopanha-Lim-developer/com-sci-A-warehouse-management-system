@@ -1,10 +1,7 @@
-from database.readwrite import (read_products, write_report)
+from database.readwrite import (write_report)
 from admin import (check_stock)
 
 def employee_section(username: str):
-    if not username:
-        username = input("Enter username for testing: ").strip().title()
-    
     running = True
     while (running):
         print("-" * 50)
